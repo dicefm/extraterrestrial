@@ -22,7 +22,8 @@ var (
 )
 
 func main() {
-	fmt.Println("~ Normaliser.")
+	val, _ := Normalise("+852 6509-8900", "USA")
+	fmt.Println("~ Normaliser.", val)
 }
 
 func Normalise(p, c string) (*PhoneResult, error) {
