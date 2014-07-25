@@ -10,6 +10,7 @@ Normalize mobile phone numbers into a E.164 format.
 ## Note:
 
 This is a port of [Node-Phone](https://github.com/AfterShip/node-phone)
+specifically this [version](https://github.com/AfterShip/node-phone/commit/59e296a4adfe0e5558c189b7310f01160613aab1)
 
 ## Dependencies
 
