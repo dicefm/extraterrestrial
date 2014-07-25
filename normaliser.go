@@ -7,8 +7,17 @@ import (
 )
 
 const (
-	PLUS_SIGN_REGEX = `(?i)^+`
-	NON_DIGIT_CHAR  = `(?i)\D`
+	PLUS_SIGN_REGEX       = `(?i)^+`
+	NON_DIGIT_CHAR        = `(?i)\D`
+	ZERO_DIGIT_CHARS      = `^0+`
+	EIGHT_DIGIT_CHARS     = `^8+`
+	RUS_START_DIGIT_CHARS = `^89`
+)
+
+var (
+	NON_LEADING_ZERO_COUNTRIES = []string{"GAB", "CIV", "COG"}
+
+	ErrPhoneMiss = fmt.Errorf("Unable to locate data from phone number.")
 )
 
 func Normalise(p, c string) (*Result, error) {
@@ -28,14 +37,25 @@ func Normalise(p, c string) (*Result, error) {
 		return nil, err
 	}
 
-	plusSign := containsPlusSign(phone)
-	fmt.Println("PlusSign ", plusSign)
-
 	// if no country, default is USA
-	iso3166 := getISO3166(country)
+	iso3166 := GetISO3166(country)
 
-	fmt.Println("PhoneData ", iso3166)
-	return nil, nil
+	var result *Result
+	if iso3166 != nil {
+		result, err = normaliseWithCountry(phone, iso3166)
+	} else {
+		result, err = normaliseWithoutCountry(phone, iso3166)
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	if IsValidPhoneISO3166(result.PhoneNumber, iso3166) {
+		return result.WithPlusSign(), nil
+	}
+
+	return result, nil
 }
 
 func normalisePhoneNumber(phone string) (string, error) {
@@ -57,34 +77,87 @@ func containsPlusSign(phone string) bool {
 	return false
 }
 
-func getISO3166(country string) *PhoneData {
-	var res *PhoneData
-	switch len(country) {
-	case 0:
-		res = ISO3166_Data[0]
-		break
-	case 2:
-		for _, v := range ISO3166_Data {
-			if country == v.Alpha2 {
-				res = v
-				break
-			}
-		}
-	case 3:
-		for _, v := range ISO3166_Data {
-			if country == v.Alpha3 {
-				res = v
-				break
-			}
-		}
-	default:
-		lower := strings.ToLower(country)
-		for _, v := range ISO3166_Data {
-			if lower == strings.ToLower(v.CountryName) {
-				res = v
-				break
-			}
+func containsString(haystack []string, needle string) bool {
+	for _, v := range haystack {
+		if v == needle {
+			return true
 		}
 	}
-	return res
+	return false
+}
+
+func containsInt(haystack []int, needle int) bool {
+	for _, v := range haystack {
+		if v == needle {
+			return true
+		}
+	}
+	return false
+}
+
+func removeZeros(phone string) (string, error) {
+	reg, err := regexp.Compile(ZERO_DIGIT_CHARS)
+	if err != nil {
+		return "", err
+	}
+	return reg.ReplaceAllString(phone, ""), nil
+}
+
+func isRussianPhoneNum(phone, country string) bool {
+	if country == "RUS" && len(phone) == 11 {
+		if matched, err := regexp.MatchString(RUS_START_DIGIT_CHARS, phone); err == nil {
+			return matched
+		}
+		return false
+	}
+	return false
+}
+
+func cleanRussianPhoneNum(phone string) (string, error) {
+	reg, err := regexp.Compile(EIGHT_DIGIT_CHARS)
+	if err != nil {
+		return "", err
+	}
+	return reg.ReplaceAllString(phone, ""), nil
+}
+
+func normaliseWithCountry(phone string, data *PhoneData) (*Result, error) {
+	var err error
+	if !containsString(NON_LEADING_ZERO_COUNTRIES, data.Alpha3) {
+		if phone, err = removeZeros(phone); err != nil {
+			return nil, err
+		}
+	}
+
+	if isRussianPhoneNum(phone, data.Alpha3) {
+		if phone, err = cleanRussianPhoneNum(phone); err != nil {
+			return nil, err
+		}
+	}
+
+	if !containsPlusSign(phone) {
+		lenOfPhoneNum := len(phone)
+		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
+			phone = fmt.Sprintf("%s%s", data.CountryCode, phone)
+		}
+	}
+
+	return NewResult(phone, data), nil
+}
+
+func normaliseWithoutCountry(phone string, data *PhoneData) (*Result, error) {
+	if containsPlusSign(phone) {
+		if data, err := GetISO3166ByPhone(phone); err == nil {
+			return NewResult(phone, data), nil
+		} else {
+			return nil, ErrPhoneMiss
+		}
+	} else {
+		lenOfPhoneNum := len(phone)
+		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
+			phone = fmt.Sprintf("1%s", phone)
+		}
+	}
+
+	return NewResult(phone, data), nil
 }
