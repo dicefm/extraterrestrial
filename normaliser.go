@@ -17,10 +17,11 @@ const (
 var (
 	NON_LEADING_ZERO_COUNTRIES = []string{"GAB", "CIV", "COG"}
 
+	ErrNotFound  = fmt.Errorf("No valid format found.")
 	ErrPhoneMiss = fmt.Errorf("Unable to locate data from phone number.")
 )
 
-func Normalise(p, c string) (*Result, error) {
+func Normalise(p, c string) (*PhoneResult, error) {
 	var (
 		phone   string
 		country string
@@ -52,10 +53,10 @@ func Normalise(p, c string) (*Result, error) {
 	}
 
 	if IsValidPhoneISO3166(result.PhoneNumber, iso3166) {
-		return result.WithPlusSign(), nil
+		return result.WithPlusSign().AsPhoneResult(), nil
 	}
 
-	return result, nil
+	return result.AsPhoneResult(), ErrNotFound
 }
 
 func normalisePhoneNumber(phone string) (string, error) {
