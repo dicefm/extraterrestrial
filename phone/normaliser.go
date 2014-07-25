@@ -1,4 +1,4 @@
-package main
+package phone
 
 import (
 	"fmt"
@@ -20,11 +20,6 @@ var (
 	ErrNotFound  = fmt.Errorf("No valid format found.")
 	ErrPhoneMiss = fmt.Errorf("Unable to locate data from phone number.")
 )
-
-func main() {
-	val, _ := Normalise("+852 6509-8900", "USA")
-	fmt.Println("~ Normaliser.", val)
-}
 
 func Normalise(p, c string) (*PhoneResult, error) {
 	var (

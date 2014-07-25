@@ -1,4 +1,4 @@
-package main
+package phone
 
 var (
 	ISO3166_Data []*PhoneData = []*PhoneData{
