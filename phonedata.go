@@ -8,3 +8,8 @@ type PhoneData struct {
 	MobileBeginsWith   []string
 	PhoneNumberLengths []int
 }
+
+type Result struct {
+	PhoneNumber string
+	CountryName string
+}
