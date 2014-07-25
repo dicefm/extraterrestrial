@@ -1,4 +1,4 @@
-[![Build Status](https://magnum.travis-ci.com/dicefm/extra-terrestrial.svg?token=8YzVDghdgWXrE5XEsMcy&branch=develop)](https://magnum.travis-ci.com/dicefm/extra-terrestrial)
+<!--[![Build Status](https://magnum.travis-ci.com/dicefm/extra-terrestrial.svg?token=8YzVDghdgWXrE5XEsMcy&branch=develop)](https://magnum.travis-ci.com/dicefm/extra-terrestrial)-->
 
 extra-terrestrial
 =======
