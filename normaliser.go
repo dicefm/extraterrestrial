@@ -21,6 +21,10 @@ var (
 	ErrPhoneMiss = fmt.Errorf("Unable to locate data from phone number.")
 )
 
+func main() {
+	fmt.Println("~ Normaliser.")
+}
+
 func Normalise(p, c string) (*PhoneResult, error) {
 	var (
 		phone   string
