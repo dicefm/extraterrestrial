@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	PLUS_SIGN_REGEX       = `(?i)^+`
+	PLUS_SIGN_REGEX       = `(?i)^\+`
 	NON_DIGIT_CHAR        = `(?i)\D`
 	ZERO_DIGIT_CHARS      = `^0+`
 	EIGHT_DIGIT_CHARS     = `^8+`
