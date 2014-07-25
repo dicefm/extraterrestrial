@@ -1,0 +1,8 @@
+language: go
+
+go:
+  - 1.3
+
+script:
+  - export PATH=$PATH:$HOME/gopath/bin
+  - go test *.go

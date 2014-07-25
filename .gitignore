@@ -1,0 +1,9 @@
+test-results/
+tmp/
+routes/
+*.DS_Store
+*.sublime-*
+*.log
+*.out
+*.cfg
+dump.rdb
