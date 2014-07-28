@@ -28,7 +28,6 @@ func Test_Phone_GB_without_country(t *testing.T) {
 	}
 }
 
-/*
 func Test_Phone_HKG_with_country(t *testing.T) {
 	makeNum := func(a uint) string {
 		mod := a % 10
@@ -214,4 +213,3 @@ func Test_Phone_valid_USA_3(t *testing.T) {
 		t.Error(err)
 	}
 }
-*/
