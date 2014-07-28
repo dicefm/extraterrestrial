@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+func GetDefaultISO3166() *PhoneData {
+	return ISO3166_Data[0]
+}
+
 func GetISO3166(country string) *PhoneData {
 	var res *PhoneData
 	switch len(country) {

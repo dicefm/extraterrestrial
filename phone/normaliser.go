@@ -28,6 +28,8 @@ func Normalise(p, c string) (*PhoneResult, error) {
 		err     error
 	)
 
+	hasPlusSign := containsPlusSign(p)
+
 	phone, err = normalisePhoneNumber(p)
 	if err != nil {
 		return nil, err
@@ -39,20 +41,23 @@ func Normalise(p, c string) (*PhoneResult, error) {
 	}
 
 	// if no country, default is USA
-	iso3166 := GetISO3166(country)
+	var iso3166 *PhoneData
+	if country != "" {
+		iso3166 = GetISO3166(country)
+	}
 
 	var result *Result
 	if iso3166 != nil {
-		result, err = normaliseWithCountry(phone, iso3166)
+		result, err = normaliseWithCountry(phone, iso3166, hasPlusSign)
 	} else {
-		result, err = normaliseWithoutCountry(phone, iso3166)
+		result, err = normaliseWithoutCountry(phone, hasPlusSign)
 	}
 
 	if err != nil {
 		return nil, err
 	}
 
-	if IsValidPhoneISO3166(result.PhoneNumber, iso3166) {
+	if IsValidPhoneISO3166(result.PhoneNumber, result.PhoneData) {
 		return result.WithPlusSign().AsPhoneResult(), nil
 	}
 
@@ -122,7 +127,7 @@ func cleanRussianPhoneNum(phone string) (string, error) {
 	return reg.ReplaceAllString(phone, ""), nil
 }
 
-func normaliseWithCountry(phone string, data *PhoneData) (*Result, error) {
+func normaliseWithCountry(phone string, data *PhoneData, hasPlusSign bool) (*Result, error) {
 	var err error
 	if !containsString(NON_LEADING_ZERO_COUNTRIES, data.Alpha3) {
 		if phone, err = removeZeros(phone); err != nil {
@@ -136,7 +141,7 @@ func normaliseWithCountry(phone string, data *PhoneData) (*Result, error) {
 		}
 	}
 
-	if !containsPlusSign(phone) {
+	if !hasPlusSign {
 		lenOfPhoneNum := len(phone)
 		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
 			phone = fmt.Sprintf("%s%s", data.CountryCode, phone)
@@ -146,8 +151,9 @@ func normaliseWithCountry(phone string, data *PhoneData) (*Result, error) {
 	return NewResult(phone, data), nil
 }
 
-func normaliseWithoutCountry(phone string, data *PhoneData) (*Result, error) {
-	if containsPlusSign(phone) {
+func normaliseWithoutCountry(phone string, hasPlusSign bool) (*Result, error) {
+	data := GetDefaultISO3166()
+	if hasPlusSign {
 		if data, err := GetISO3166ByPhone(phone); err == nil {
 			return NewResult(phone, data), nil
 		} else {
