@@ -57,6 +57,10 @@ func Normalise(p, c string) (*PhoneResult, error) {
 		return nil, err
 	}
 
+	if result.PhoneData == nil {
+		return nil, ErrPhoneMiss
+	}
+
 	if IsValidPhoneISO3166(result.PhoneNumber, result.PhoneData) {
 		return result.WithPlusSign().AsPhoneResult(), nil
 	}
