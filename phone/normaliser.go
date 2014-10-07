@@ -163,11 +163,17 @@ func normaliseWithoutCountry(phone string, hasPlusSign bool) (*Result, error) {
 		} else {
 			return nil, ErrPhoneMiss
 		}
-	} else {
-		lenOfPhoneNum := len(phone)
-		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
-			phone = fmt.Sprintf("1%s", phone)
-		}
+	}
+
+	// Let's try and brute force it anyway.
+	if possible, err := GetISO3166ByPhone(phone); err == nil && possible != nil {
+		return NewResult(phone, possible), nil
+	}
+
+	// We really have no idea what this phone number is!
+	lenOfPhoneNum := len(phone)
+	if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
+		phone = fmt.Sprintf("1%s", phone)
 	}
 
 	return NewResult(phone, data), nil
