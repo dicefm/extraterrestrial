@@ -847,7 +847,7 @@ var (
 			PhoneNumberLengths: []int{9},
 		},
 		&PhoneData{
-			CountryData:        c.ISO3166_CountriesData[c.CountryNamePalestinianTerritory],
+			CountryData:        c.ISO3166_CountriesData[c.CountryNamePalestinia],
 			MobileBeginsWith:   []string{"5"},
 			PhoneNumberLengths: []int{9},
 		},
@@ -1017,7 +1017,7 @@ var (
 			PhoneNumberLengths: []int{8},
 		},
 		&PhoneData{
-			CountryData:        c.ISO3166_CountriesData[c.CountryNameTimor-Leste],
+			CountryData:        c.ISO3166_CountriesData[c.CountryNameTimorLeste],
 			MobileBeginsWith:   []string{"7"},
 			PhoneNumberLengths: []int{8},
 		},

@@ -190,13 +190,13 @@ var (
 	CountryNameSaintPierreAndMiquelon          string = "Saint Pierre And Miquelon"
 	CountryNameSerbia                          string = "Serbia"
 	CountryNameSaoTomeandPrincipe              string = "Sao Tome and Principe"
-	CountryNameSCountryname                    string = "SCountryname"
+	CountryNameSuriname                        string = "Suriname"
 	CountryNameSlovakia                        string = "Slovakia"
 	CountryNameSlovenia                        string = "Slovenia"
 	CountryNameSweden                          string = "Sweden"
 	CountryNameSeychelles                      string = "Seychelles"
 	CountryNameSyrianArabRepublic              string = "Syrian Arab Republic"
-	CountryNameTurksandCaicosIslands           string = "Turks and Caicos Islands"
+	CountryNameTurksAndCaicosIslands           string = "Turks and Caicos Islands"
 	CountryNameChad                            string = "Chad"
 	CountryNameTogo                            string = "Togo"
 	CountryNameThailand                        string = "Thailand"
@@ -205,11 +205,11 @@ var (
 	CountryNameTurkmenistan                    string = "Turkmenistan"
 	CountryNameTimorLeste                      string = "Timor-Leste"
 	CountryNameTonga                           string = "Tonga"
-	CountryNameTrinidadandTobago               string = "Trinidad and Tobago"
+	CountryNameTrinidadAndTobago               string = "Trinidad and Tobago"
 	CountryNameTunisia                         string = "Tunisia"
 	CountryNameTurkey                          string = "Turkey"
 	CountryNameTuvalu                          string = "Tuvalu"
-	CountryNameTaiwanProvinceOfChina           string = "Taiwan Province Of China"
+	CountryNameTaiwan                          string = "Taiwan Province Of China"
 	CountryNameTanzania                        string = "Tanzania United Republic of"
 	CountryNameUganda                          string = "Uganda"
 	CountryNameUkraine                         string = "Ukraine"
@@ -221,7 +221,7 @@ var (
 	CountryNameVirginIslandsUS                 string = "Virgin Islands U.S."
 	CountryNameVietNam                         string = "Viet Nam"
 	CountryNameVanuatu                         string = "Vanuatu"
-	CountryNameWallisandFutuna                 string = "Wallis and Futuna"
+	CountryNameWallisAndFutuna                 string = "Wallis and Futuna"
 	CountryNameSamoa                           string = "Samoa"
 	CountryNameYemen                           string = "Yemen"
 	CountryNameSouthAfrica                     string = "South Africa"
@@ -1553,7 +1553,7 @@ var (
 			Name:        "Sao Tome and Principe",
 		},
 
-		CountryNameSCountryname: CountryData{
+		CountryNameSuriname: CountryData{
 			Alpha2:      "SR",
 			Alpha3:      "SUR",
 			CountryCode: "597",
@@ -1595,7 +1595,7 @@ var (
 			Name:        "Syrian Arab Republic",
 		},
 
-		CountryNameTurksandCaicosIslands: CountryData{
+		CountryNameTurksAndCaicosIslands: CountryData{
 			Alpha2:      "TC",
 			Alpha3:      "TCA",
 			CountryCode: "1",
@@ -1658,7 +1658,7 @@ var (
 			Name:        "Tonga",
 		},
 
-		CountryNameTrinidadandTobago: CountryData{
+		CountryNameTrinidadAndTobago: CountryData{
 			Alpha2:      "TT",
 			Alpha3:      "TTO",
 			CountryCode: "1",
@@ -1686,7 +1686,7 @@ var (
 			Name:        "Tuvalu",
 		},
 
-		CountryNameTaiwanProvinceOfChina: CountryData{
+		CountryNameTaiwan: CountryData{
 			Alpha2:      "TW",
 			Alpha3:      "TWN",
 			CountryCode: "886",
@@ -1770,7 +1770,7 @@ var (
 			Name:        "Vanuatu",
 		},
 
-		CountryNameWallisandFutuna: CountryData{
+		CountryNameWallisAndFutuna: CountryData{
 			Alpha2:      "WF",
 			Alpha3:      "WLF",
 			CountryCode: "681",
