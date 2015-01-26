@@ -21,7 +21,7 @@ func (r Result) WithPlusSign() *Result {
 }
 
 func (r Result) AsPhoneResult() *PhoneResult {
-	return NewPhoneResult(r.PhoneNumber, r.PhoneData.Alpha3)
+	return NewPhoneResult(r.PhoneNumber, r.PhoneData.CountryData.Alpha3)
 }
 
 type PhoneResult struct {

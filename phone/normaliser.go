@@ -133,13 +133,13 @@ func cleanRussianPhoneNum(phone string) (string, error) {
 
 func normaliseWithCountry(phone string, data *PhoneData, hasPlusSign bool) (*Result, error) {
 	var err error
-	if !containsString(NON_LEADING_ZERO_COUNTRIES, data.Alpha3) {
+	if !containsString(NON_LEADING_ZERO_COUNTRIES, data.CountryData.Alpha3) {
 		if phone, err = removeZeros(phone); err != nil {
 			return nil, err
 		}
 	}
 
-	if isRussianPhoneNum(phone, data.Alpha3) {
+	if isRussianPhoneNum(phone, data.CountryData.Alpha3) {
 		if phone, err = cleanRussianPhoneNum(phone); err != nil {
 			return nil, err
 		}
@@ -148,7 +148,7 @@ func normaliseWithCountry(phone string, data *PhoneData, hasPlusSign bool) (*Res
 	if !hasPlusSign {
 		lenOfPhoneNum := len(phone)
 		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
-			phone = fmt.Sprintf("%s%s", data.CountryCode, phone)
+			phone = fmt.Sprintf("%s%s", data.CountryData.CountryCode, phone)
 		}
 	}
 

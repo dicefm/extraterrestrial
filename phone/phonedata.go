@@ -13,7 +13,7 @@ type PhoneData struct {
 
 func NewPhoneData() *PhoneData {
 	return &PhoneData{
-		CountryData:        countries.NewCountryData(),
+		CountryData:        countries.CountryData{},
 		MobileBeginsWith:   make([]string, 0, 0),
 		PhoneNumberLengths: make([]int, 0, 0),
 	}
