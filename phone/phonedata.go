@@ -1,44 +1,20 @@
 package phone
 
-import "fmt"
+import (
+	"github.com/dicefm/extraterrestrial/countries"
+)
 
 type PhoneData struct {
-	Alpha2             string
-	Alpha3             string
-	CountryCode        string
-	CountryName        string
+	CountryData        countries.CountryData
+	PhoneCode          string
 	MobileBeginsWith   []string
 	PhoneNumberLengths []int
 }
 
-type Result struct {
-	PhoneNumber string
-	PhoneData   *PhoneData
-}
-
-func NewResult(phone string, data *PhoneData) *Result {
-	return &Result{
-		PhoneNumber: phone,
-		PhoneData:   data,
-	}
-}
-
-func (r Result) WithPlusSign() *Result {
-	return NewResult(fmt.Sprintf("+%s", r.PhoneNumber), r.PhoneData)
-}
-
-func (r Result) AsPhoneResult() *PhoneResult {
-	return NewPhoneResult(r.PhoneNumber, r.PhoneData.Alpha3)
-}
-
-type PhoneResult struct {
-	PhoneNumber string
-	Country     string
-}
-
-func NewPhoneResult(phone, country string) *PhoneResult {
-	return &PhoneResult{
-		PhoneNumber: phone,
-		Country:     country,
+func NewPhoneData() *PhoneData {
+	return &PhoneData{
+		CountryData:        countries.NewCountryData(),
+		MobileBeginsWith:   make([]string, 0, 0),
+		PhoneNumberLengths: make([]int, 0, 0),
 	}
 }
