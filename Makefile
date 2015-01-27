@@ -10,6 +10,6 @@ build:
 	go build
 
 test: clean
-	./lib/bash/unit-test.sh
+	go test "github.com/dicefm/extraterrestrial/phone"
 
 all-travis: setup test
