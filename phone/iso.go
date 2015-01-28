@@ -7,33 +7,33 @@ import (
 )
 
 func GetDefaultISO3166() *PhoneData {
-	return ISO3166_Data[0]
+	return ISO3166_PhoneData[0]
 }
 
 func GetISO3166(country string) *PhoneData {
 	var res *PhoneData
 	switch len(country) {
 	case 0:
-		res = ISO3166_Data[0]
+		res = ISO3166_PhoneData[0]
 		break
 	case 2:
-		for _, v := range ISO3166_Data {
-			if country == v.Alpha2 {
+		for _, v := range ISO3166_PhoneData {
+			if country == v.CountryData.Alpha2 {
 				res = v
 				break
 			}
 		}
 	case 3:
-		for _, v := range ISO3166_Data {
-			if country == v.Alpha3 {
+		for _, v := range ISO3166_PhoneData {
+			if country == v.CountryData.Alpha3 {
 				res = v
 				break
 			}
 		}
 	default:
 		lower := strings.ToLower(country)
-		for _, v := range ISO3166_Data {
-			if lower == strings.ToLower(v.CountryName) {
+		for _, v := range ISO3166_PhoneData {
+			if lower == strings.ToLower(v.CountryData.Name) {
 				res = v
 				break
 			}
@@ -45,16 +45,16 @@ func GetISO3166(country string) *PhoneData {
 func GetISO3166ByPhone(phone string) (*PhoneData, error) {
 	lenOfPhoneNum := len(phone)
 
-	for _, v := range ISO3166_Data {
-		if reg, err := regexp.Compile(fmt.Sprintf("^%s", v.CountryCode)); err == nil {
+	for _, v := range ISO3166_PhoneData {
+		if reg, err := regexp.Compile(fmt.Sprintf("^%s", v.CountryData.CountryCode)); err == nil {
 
 			for _, x := range v.PhoneNumberLengths {
-				if reg.MatchString(phone) && lenOfPhoneNum == (len(v.CountryCode)+x) {
+				if reg.MatchString(phone) && lenOfPhoneNum == (len(v.CountryData.CountryCode)+x) {
 					// it match.. but may have more than one result.
 					// e.g. USA and Canada. need to check mobileBeginWith
 
 					for _, y := range v.MobileBeginsWith {
-						if reg, err := regexp.Compile(fmt.Sprintf("^%s%s", v.CountryCode, y)); err == nil {
+						if reg, err := regexp.Compile(fmt.Sprintf("^%s%s", v.CountryData.CountryCode, y)); err == nil {
 							if reg.MatchString(phone) {
 								return v, nil
 							}
@@ -74,7 +74,7 @@ func GetISO3166ByPhone(phone string) (*PhoneData, error) {
 }
 
 func IsValidPhoneISO3166(p string, data *PhoneData) bool {
-	if reg, err := regexp.Compile(fmt.Sprintf("^%s", data.CountryCode)); err == nil {
+	if reg, err := regexp.Compile(fmt.Sprintf("^%s", data.CountryData.CountryCode)); err == nil {
 		phone := reg.ReplaceAllString(p, "")
 		lenOfPhoneNum := len(phone)
 		for _, v := range data.PhoneNumberLengths {

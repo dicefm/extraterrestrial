@@ -5,4 +5,4 @@ go:
 
 script:
   - export PATH=$PATH:$HOME/gopath/bin
-  - go test *.go
+  - make all-travis
