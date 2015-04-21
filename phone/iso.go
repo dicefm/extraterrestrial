@@ -46,10 +46,10 @@ func GetISO3166ByPhone(phone string) (*PhoneData, error) {
 	lenOfPhoneNum := len(phone)
 
 	for _, v := range ISO3166_PhoneData {
-		if reg, err := regexp.Compile(fmt.Sprintf("^%s", v.CountryData.CountryCode)); err == nil {
+		if reg, err := regexp.Compile(fmt.Sprintf("^%s", v.CountryData.CountryCode)); err == nil && reg.MatchString(phone) {
 
 			for _, x := range v.PhoneNumberLengths {
-				if reg.MatchString(phone) && lenOfPhoneNum == (len(v.CountryData.CountryCode)+x) {
+				if lenOfPhoneNum == (len(v.CountryData.CountryCode) + x) {
 					// it match.. but may have more than one result.
 					// e.g. USA and Canada. need to check mobileBeginWith
 
@@ -65,7 +65,7 @@ func GetISO3166ByPhone(phone string) (*PhoneData, error) {
 				}
 			}
 
-		} else {
+		} else if err != nil {
 			return nil, err
 		}
 	}
