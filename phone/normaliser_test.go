@@ -94,6 +94,28 @@ func Test_Phone_2_USA_without_country(t *testing.T) {
 	}
 }
 
+func Test_Phone_AUT_without_country(t *testing.T) {
+	makeNum := func(a uint) string {
+		mod := a % 10
+		return fmt.Sprintf("+4366480%s9%s2%s0%s", mod, mod)
+	}
+	prepare := func(a string) string {
+		res, _ := normalisePhoneNumber(a)
+		return fmt.Sprintf("+%s", res)
+	}
+
+	f := func(x uint) *PhoneResult {
+		return NewPhoneResult(prepare(makeNum(x)), "AUT")
+	}
+	g := func(x uint) *PhoneResult {
+		res, _ := Normalise(makeNum(x), "")
+		return res
+	}
+	if err := quick.CheckEqual(f, g, nil); err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_Phone_USA_HKG_missmatch(t *testing.T) {
 	makeNum := func(a uint) string {
 		mod := a % 10
