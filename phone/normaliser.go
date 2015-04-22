@@ -156,18 +156,22 @@ func normaliseWithCountry(phone string, data *PhoneData, hasPlusSign bool) (*Res
 }
 
 func normaliseWithoutCountry(phone string, hasPlusSign bool) (*Result, error) {
-	data := GetDefaultISO3166()
+	// Let's try and brute force it anyway
+	if possible, err := GetISO3166ByPhone(phone); err == nil && possible != nil {
+		return NewResult(phone, possible), nil
+	}
+
 	if hasPlusSign {
-		if data, err := GetISO3166ByPhone(phone); err == nil {
-			return NewResult(phone, data), nil
-		} else {
-			return nil, ErrPhoneMiss
-		}
-	} else {
-		lenOfPhoneNum := len(phone)
-		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
-			phone = fmt.Sprintf("1%s", phone)
-		}
+		return nil, ErrPhoneMiss
+	}
+
+	// We really have no idea what this phone number is!
+	var (
+		data          = GetDefaultISO3166()
+		lenOfPhoneNum = len(phone)
+	)
+	if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
+		phone = fmt.Sprintf("1%s", phone)
 	}
 
 	return NewResult(phone, data), nil
