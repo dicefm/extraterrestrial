@@ -19,17 +19,22 @@ func main() {
 
 	rand.Seed(time.Now().UnixNano())
 
-	numbers := [100][]string{}
+	numbers := [][]string{}
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 50; i++ {
 		fmt.Println("Running test : ", i)
-		numbers[i] = test("+%v%v")
+		numbers = append(numbers, test("+%v%v", true))
 	}
 
-	fmt.Println("Total numbers checked: ", len(numbers[0])*100)
+	for i := 0; i < 50; i++ {
+		fmt.Println("Running test : ", i)
+		numbers = append(numbers, test("%v%v", false))
+	}
+
+	fmt.Println("Total numbers checked: ", len(numbers[0])*len(numbers))
 }
 
-func test(format string) []string {
+func test(format string, validate bool) []string {
 	numbers := []string{}
 	for _, v := range phone.ISO3166_PhoneData {
 		code := v.CountryData.CountryCode
@@ -40,8 +45,10 @@ func test(format string) []string {
 				x, err := NormalisePhone(fmt.Sprintf(format, code, num))
 				numbers = append(numbers, x)
 				if err != nil {
-					fmt.Println(x)
-					panic(err)
+					if validate || (!validate && err != phone.ErrNotFound) {
+						fmt.Println(x)
+						panic(err)
+					}
 				}
 			}
 		}
