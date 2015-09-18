@@ -44,7 +44,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameAndorra],
 			MobileBeginsWith:   []string{"3", "4", "6"},
-			PhoneNumberLengths: []int{6},
+			PhoneNumberLengths: []int{6, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameUnitedArabEmirates],
@@ -94,7 +94,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameBelgium],
 			MobileBeginsWith:   []string{"4"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameBenin],
@@ -114,7 +114,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameBulgaria],
 			MobileBeginsWith:   []string{"87", "88", "89", "98", "99", "43"},
-			PhoneNumberLengths: []int{8, 9},
+			PhoneNumberLengths: []int{7, 8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameBahrain],
@@ -269,7 +269,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameGermany],
 			MobileBeginsWith:   []string{"15", "16", "17"},
-			PhoneNumberLengths: []int{10, 11},
+			PhoneNumberLengths: []int{3, 4, 5, 6, 7, 8, 9, 10, 11},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameDjibouti],
@@ -319,7 +319,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameEstonia],
 			MobileBeginsWith:   []string{"5"},
-			PhoneNumberLengths: []int{8},
+			PhoneNumberLengths: []int{7, 8},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameEthiopia],
@@ -329,7 +329,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameFinland],
 			MobileBeginsWith:   []string{"4", "5"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{4, 5, 6, 7, 8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameFiji],
@@ -344,11 +344,11 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameFrance],
 			MobileBeginsWith:   []string{"6", "7"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameFaroeIslands],
-			MobileBeginsWith:   []string{},
+			MobileBeginsWith:   []string{"21", "22", "23", "24", "25", "26", "27", "28", "29", "5", "71", "72", "73", "74", "75", "76", "77", "78", "79", "91", "92", "93", "94", "95", "96", "97", "98", "99"},
 			PhoneNumberLengths: []int{6},
 		},
 		&PhoneData{
@@ -364,7 +364,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameUnitedKingdom],
 			MobileBeginsWith:   []string{"7"},
-			PhoneNumberLengths: []int{10},
+			PhoneNumberLengths: []int{7, 9, 10},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameGeorgia],
@@ -454,7 +454,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameCroatia],
 			MobileBeginsWith:   []string{"9"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameHaiti],
@@ -464,7 +464,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameHungary],
 			MobileBeginsWith:   []string{"20", "30", "31", "70"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIndonesia],
@@ -479,7 +479,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIreland],
 			MobileBeginsWith:   []string{"82", "83", "84", "85", "86", "87", "88", "89"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{7, 8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIran],
@@ -494,7 +494,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIceland],
 			MobileBeginsWith:   []string{"6", "7", "8"},
-			PhoneNumberLengths: []int{7},
+			PhoneNumberLengths: []int{7, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIsrael],
@@ -504,7 +504,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameItaly],
 			MobileBeginsWith:   []string{"3"},
-			PhoneNumberLengths: []int{10},
+			PhoneNumberLengths: []int{8, 9, 10, 11, 12},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameJamaica],
@@ -589,7 +589,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameLiechtenstein],
 			MobileBeginsWith:   []string{"7"},
-			PhoneNumberLengths: []int{7},
+			PhoneNumberLengths: []int{7, 8, 9, 10, 11},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameSriLanka],
@@ -609,7 +609,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameLuxembourg],
 			MobileBeginsWith:   []string{"6"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{6, 7, 8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameLatvia],
@@ -769,12 +769,12 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameNetherlands],
 			MobileBeginsWith:   []string{"6"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{9, 10},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameNorway],
 			MobileBeginsWith:   []string{"4", "9"},
-			PhoneNumberLengths: []int{8},
+			PhoneNumberLengths: []int{4, 5, 6, 7, 8, 9, 10, 11, 12},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameNepal],
@@ -929,7 +929,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameSanMarino],
 			MobileBeginsWith:   []string{"3", "6"},
-			PhoneNumberLengths: []int{10},
+			PhoneNumberLengths: []int{4, 5, 6, 7, 8, 9, 10, 11, 12},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameSomalia],
@@ -969,7 +969,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameSweden],
 			MobileBeginsWith:   []string{"7"},
-			PhoneNumberLengths: []int{9},
+			PhoneNumberLengths: []int{6, 7, 8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameSeychelles],
