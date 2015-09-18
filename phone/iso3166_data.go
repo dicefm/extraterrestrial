@@ -79,7 +79,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameAustria],
 			MobileBeginsWith:   []string{"6"},
-			PhoneNumberLengths: []int{10, 12},
+			PhoneNumberLengths: []int{4, 5, 6, 7, 8, 9, 10, 11, 12, 13},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameAzerbaijan],
