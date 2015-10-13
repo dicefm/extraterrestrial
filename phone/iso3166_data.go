@@ -53,8 +53,8 @@ var (
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameArgentina],
-			MobileBeginsWith:   []string{},
-			PhoneNumberLengths: []int{10},
+			MobileBeginsWith:   []string{"54"},
+			PhoneNumberLengths: []int{6, 7, 8, 10},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameArmenia],
@@ -93,8 +93,8 @@ var (
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameBelgium],
-			MobileBeginsWith:   []string{"4"},
-			PhoneNumberLengths: []int{8, 9},
+			MobileBeginsWith:   []string{"4", "32"},
+			PhoneNumberLengths: []int{6, 8, 9},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameBenin],
