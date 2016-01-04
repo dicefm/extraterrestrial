@@ -833,8 +833,8 @@ var (
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNamePuertoRico],
-			MobileBeginsWith:   []string{},
-			PhoneNumberLengths: []int{7},
+			MobileBeginsWith:   []string{"787", "939"},
+			PhoneNumberLengths: []int{7, 8, 9, 10},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNamePortugal],
