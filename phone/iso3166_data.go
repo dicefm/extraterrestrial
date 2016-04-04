@@ -1093,8 +1093,8 @@ var (
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameVirginIslandsUS],
-			MobileBeginsWith:   []string{},
-			PhoneNumberLengths: []int{7},
+			MobileBeginsWith:   []string{"340"},
+			PhoneNumberLengths: []int{10},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameVietNam],
