@@ -54,7 +54,7 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameArgentina],
 			MobileBeginsWith:   []string{"54"},
-			PhoneNumberLengths: []int{6, 7, 8, 10},
+			PhoneNumberLengths: []int{6, 7, 8, 10, 11},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameArmenia],
