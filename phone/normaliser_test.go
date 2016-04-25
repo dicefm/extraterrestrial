@@ -235,3 +235,32 @@ func Test_Phone_valid_USA_3(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func Test_Phone_Valid_Argentina_1(t *testing.T) {
+	number := "+54 9 11 61231234"
+	phone, _ := normalisePhoneNumber(number)
+	data, err := GetISO3166ByPhone(phone)
+
+	if data == nil && err == nil {
+		t.Error("We got no matching for number")
+	}
+}
+
+func Test_Phone_Valid_Argentina_2(t *testing.T) {
+	number := "+54 9 11 61231234"
+	phone, _ := normalisePhoneNumber(number)
+	data, err := GetISO3166ByPhone(phone)
+
+	if data == nil && err == nil {
+		t.Error("We got no matching for number")
+	}
+}
+
+func Test_Phone_Valid_Argentina_3(t *testing.T) {
+	number := "+54 9 11 61231234"
+	_, err := Normalise(number, "")
+
+	if err != nil {
+		t.Error(err)
+	}
+}
