@@ -506,6 +506,7 @@ var (
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameItaly],
 			MobileBeginsWith:   []string{"3"},
 			PhoneNumberLengths: []int{8, 9, 10, 11, 12},
+			RemoveLeadingZeros: false,
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameJamaica],
