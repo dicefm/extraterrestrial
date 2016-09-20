@@ -9,6 +9,7 @@ type PhoneData struct {
 	PhoneCode          string
 	MobileBeginsWith   []string
 	PhoneNumberLengths []int
+	RemoveLeadingZeros bool
 }
 
 func NewPhoneData() *PhoneData {
@@ -16,5 +17,6 @@ func NewPhoneData() *PhoneData {
 		CountryData:        countries.CountryData{},
 		MobileBeginsWith:   make([]string, 0, 0),
 		PhoneNumberLengths: make([]int, 0, 0),
+		RemoveLeadingZeros: false,
 	}
 }
