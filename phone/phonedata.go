@@ -17,6 +17,6 @@ func NewPhoneData() *PhoneData {
 		CountryData:        countries.CountryData{},
 		MobileBeginsWith:   make([]string, 0, 0),
 		PhoneNumberLengths: make([]int, 0, 0),
-		RemoveLeadingZeros: false,
+		RemoveLeadingZeros: true,
 	}
 }

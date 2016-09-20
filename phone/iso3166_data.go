@@ -190,6 +190,7 @@ var (
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameSwitzerland],
 			MobileBeginsWith:   []string{"7"},
 			PhoneNumberLengths: []int{9},
+			RemoveLeadingZeros: false,
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameChile],
@@ -365,7 +366,6 @@ var (
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameUnitedKingdom],
 			MobileBeginsWith:   []string{"7"},
 			PhoneNumberLengths: []int{7, 9, 10},
-			RemoveLeadingZeros: true,
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameGeorgia],
@@ -481,7 +481,6 @@ var (
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIreland],
 			MobileBeginsWith:   []string{"82", "83", "84", "85", "86", "87", "88", "89"},
 			PhoneNumberLengths: []int{7, 8, 9},
-			RemoveLeadingZeros: true,
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameIran],
