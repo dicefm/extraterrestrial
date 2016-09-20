@@ -6,6 +6,31 @@ import (
 	"testing/quick"
 )
 
+func Test_Phone_GB_with_country_and_leading_zero(t *testing.T) {
+	makeNum := func(a uint) (string, string) {
+		mod := a % 1
+		return fmt.Sprintf("+44748%v09%v54%v", mod, mod, mod),
+			fmt.Sprintf("+440000748%v09%v54%v", mod, mod, mod)
+	}
+	prepare := func(a string) string {
+		res, _ := normalisePhoneNumber(a)
+		return fmt.Sprintf("+%s", res)
+	}
+
+	f := func(x uint) *PhoneResult {
+		a, _ := makeNum(x)
+		return NewPhoneResult(prepare(a), "GBR")
+	}
+	g := func(x uint) *PhoneResult {
+		_, b := makeNum(x)
+		res, _ := Normalise(b, "GBR")
+		return res
+	}
+	if err := quick.CheckEqual(f, g, nil); err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_Phone_GB_without_country(t *testing.T) {
 	makeNum := func(a uint) string {
 		mod := a % 1

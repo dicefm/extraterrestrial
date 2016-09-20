@@ -145,6 +145,18 @@ func normaliseWithCountry(phone string, data *PhoneData, hasPlusSign bool) (*Res
 		}
 	}
 
+	// remove any leading zeros after the country code.
+	if data.RemoveLeadingZeros {
+		var (
+			code        = len(data.CountryData.CountryCode)
+			left, right = phone[:code], phone[code:]
+			res, err    = removeZeros(right)
+		)
+		if err == nil {
+			phone = fmt.Sprintf("%s%s", left, res)
+		}
+	}
+
 	if !hasPlusSign {
 		lenOfPhoneNum := len(phone)
 		if containsInt(data.PhoneNumberLengths, lenOfPhoneNum) {
