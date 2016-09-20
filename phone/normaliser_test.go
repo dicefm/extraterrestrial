@@ -6,6 +6,17 @@ import (
 	"testing/quick"
 )
 
+func Test_InvalidPhone_UK(t *testing.T) {
+	var (
+		number = "InvalidPhone"
+		_, err = Normalise(number, "GBR")
+	)
+
+	if err == nil {
+		t.Error("Error shouldn't be nil")
+	}
+}
+
 func Test_Phone_GB_with_country_and_leading_zero(t *testing.T) {
 	makeNum := func(a uint) (string, string) {
 		mod := a % 1
