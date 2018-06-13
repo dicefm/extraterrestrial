@@ -807,8 +807,8 @@ var (
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameMyanmar],
 			MobileBeginsWith:   []string{"9"},
-			PhoneNumberLengths: []int{8},
 			RemoveLeadingZeros: true,
+			PhoneNumberLengths: []int{8, 9, 10},
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameMontenegro],
