@@ -668,7 +668,7 @@ var (
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameMalta],
-			MobileBeginsWith:   []string{"79", "99"},
+			MobileBeginsWith:   []string{"77", "79", "99"},
 			PhoneNumberLengths: []int{8},
 		},
 		&PhoneData{
