@@ -902,7 +902,7 @@ var (
 		},
 		&PhoneData{
 			CountryData:        c.ISO3166_CountriesData[c.CountryNameNigeria],
-			MobileBeginsWith:   []string{"70", "80", "81"},
+			MobileBeginsWith:   []string{"70", "80", "81", "90"},
 			PhoneNumberLengths: []int{10},
 			RemoveLeadingZeros: true,
 		},
