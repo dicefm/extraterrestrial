@@ -10,6 +10,6 @@ build:
 	go build
 
 test: clean
-	go test "github.com/dicefm/extraterrestrial/phone"
+	go test -v "github.com/dicefm/extraterrestrial/phone"
 
 all-travis: setup test
